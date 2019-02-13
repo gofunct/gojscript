@@ -9,7 +9,6 @@ require (
 	github.com/fatih/structs v1.0.0
 	github.com/gofunct/goexec v0.0.0-20190213213311-cdb556a6c252
 	github.com/itsjamie/go-bindata-templates v0.0.0-20150713164059-65d795d0c740
-	github.com/jessevdk/go-assets v0.0.0-20160921144138-4f4301a06e15
 	github.com/jteeuwen/go-bindata v0.0.0-20151023091102-a0ff2567cfb7 // indirect
 	github.com/labstack/echo v0.0.0-20170202195017-a8b6864be328
 	github.com/labstack/gommon v0.0.0-20170112040350-f72d3c883f8e // indirect

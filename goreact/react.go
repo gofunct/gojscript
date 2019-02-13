@@ -4,6 +4,7 @@ import (
 	crand "crypto/rand"
 	"encoding/binary"
 	"fmt"
+	"github.com/gofunct/goreact/modules/base"
 	"html/template"
 	"math/rand"
 	"net/http"
@@ -186,7 +187,7 @@ func newJSVM(filePath string, proxy http.Handler) *JSVM {
 	vm.EventLoop.Start()
 	fetch.Enable(vm.EventLoop, proxy)
 
-	bundle, err := Asset(filePath)
+	bundle, err := base.Asset(filePath)
 	PanicIf(err)
 
 	vm.EventLoop.RunOnLoop(func(_vm *goja.Runtime) {

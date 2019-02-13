@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/gofunct/goreact/modules/base"
 	"html/template"
 	"io"
 	"net/http"
@@ -99,8 +100,8 @@ func NewApp(opts ...AppOptions) *App {
 
 	// Create file http server from bindata
 	fileServerHandler := http.FileServer(&assetfs.AssetFS{
-		Asset:    Asset,
-		AssetDir: AssetDir,
+		Asset:    base.Asset,
+		AssetDir: base.AssetDir,
 	})
 
 	// Serve static via bindata and handle via react app
@@ -115,7 +116,7 @@ func NewApp(opts ...AppOptions) *App {
 				if ok && httpErr.Code == http.StatusNotFound {
 					// check if file exists
 					// omit first `/`
-					if _, err := Asset(c.Request().URL.Path[1:]); err == nil {
+					if _, err := base.Asset(c.Request().URL.Path[1:]); err == nil {
 						fileServerHandler.ServeHTTP(
 							c.Response().Writer,
 							c.Request())
@@ -146,7 +147,7 @@ type Template struct {
 // NewTemplate creates a new template
 func NewTemplate() *Template {
 	return &Template{
-		templates: binhtml.New(Asset, AssetDir).MustLoadDirectory("templates"),
+		templates: binhtml.New(base.Asset, base.AssetDir).MustLoadDirectory("templates"),
 	}
 }
 

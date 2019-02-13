@@ -1,4 +1,4 @@
-package main
+package base
 
 import (
 	"fmt"
@@ -18,7 +18,7 @@ func bindata_read(path, name string) ([]byte, error) {
 // static_build_bundle_css reads file data from disk. It returns an error on failure.
 func static_build_bundle_css() ([]byte, error) {
 	return bindata_read(
-		"/Users/coleman/go/src/github.com/gofunct/goreact/server/data/static/build/bundle.css",
+		"/Users/coleman/go/src/github.com/gofunct/goreact/modules/base/data/static/build/bundle.css",
 		"static/build/bundle.css",
 	)
 }
@@ -26,7 +26,7 @@ func static_build_bundle_css() ([]byte, error) {
 // static_build_bundle_js reads file data from disk. It returns an error on failure.
 func static_build_bundle_js() ([]byte, error) {
 	return bindata_read(
-		"/Users/coleman/go/src/github.com/gofunct/goreact/server/data/static/build/bundle.js",
+		"/Users/coleman/go/src/github.com/gofunct/goreact/modules/base/data/static/build/bundle.js",
 		"static/build/bundle.js",
 	)
 }
@@ -34,7 +34,7 @@ func static_build_bundle_js() ([]byte, error) {
 // static_images_favicon_ico reads file data from disk. It returns an error on failure.
 func static_images_favicon_ico() ([]byte, error) {
 	return bindata_read(
-		"/Users/coleman/go/src/github.com/gofunct/goreact/server/data/static/images/favicon.ico",
+		"/Users/coleman/go/src/github.com/gofunct/goreact/modules/base/data/static/images/favicon.ico",
 		"static/images/favicon.ico",
 	)
 }
@@ -42,7 +42,7 @@ func static_images_favicon_ico() ([]byte, error) {
 // templates_react_html reads file data from disk. It returns an error on failure.
 func templates_react_html() ([]byte, error) {
 	return bindata_read(
-		"/Users/coleman/go/src/github.com/gofunct/goreact/server/data/templates/react.html",
+		"/Users/coleman/go/src/github.com/gofunct/goreact/modules/base/data/templates/react.html",
 		"templates/react.html",
 	)
 }
@@ -69,12 +69,11 @@ func AssetNames() []string {
 
 // _bindata is a table, holding each asset generator, mapped to its name.
 var _bindata = map[string]func() ([]byte, error){
-	"static/build/bundle.css":   static_build_bundle_css,
-	"static/build/bundle.js":    static_build_bundle_js,
+	"static/build/bundle.css": static_build_bundle_css,
+	"static/build/bundle.js": static_build_bundle_js,
 	"static/images/favicon.ico": static_images_favicon_ico,
-	"templates/react.html":      templates_react_html,
+	"templates/react.html": templates_react_html,
 }
-
 // AssetDir returns the file names below a certain
 // directory embedded in the file by go-bindata.
 // For example if you run go-bindata on data/... and data contains the
@@ -111,21 +110,24 @@ func AssetDir(name string) ([]string, error) {
 }
 
 type _bintree_t struct {
-	Func     func() ([]byte, error)
+	Func func() ([]byte, error)
 	Children map[string]*_bintree_t
 }
-
 var _bintree = &_bintree_t{nil, map[string]*_bintree_t{
 	"static": &_bintree_t{nil, map[string]*_bintree_t{
 		"build": &_bintree_t{nil, map[string]*_bintree_t{
-			"bundle.css": &_bintree_t{static_build_bundle_css, map[string]*_bintree_t{}},
-			"bundle.js":  &_bintree_t{static_build_bundle_js, map[string]*_bintree_t{}},
+			"bundle.css": &_bintree_t{static_build_bundle_css, map[string]*_bintree_t{
+			}},
+			"bundle.js": &_bintree_t{static_build_bundle_js, map[string]*_bintree_t{
+			}},
 		}},
 		"images": &_bintree_t{nil, map[string]*_bintree_t{
-			"favicon.ico": &_bintree_t{static_images_favicon_ico, map[string]*_bintree_t{}},
+			"favicon.ico": &_bintree_t{static_images_favicon_ico, map[string]*_bintree_t{
+			}},
 		}},
 	}},
 	"templates": &_bintree_t{nil, map[string]*_bintree_t{
-		"react.html": &_bintree_t{templates_react_html, map[string]*_bintree_t{}},
+		"react.html": &_bintree_t{templates_react_html, map[string]*_bintree_t{
+		}},
 	}},
 }}
