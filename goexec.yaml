@@ -1,3 +1,0 @@
-babel_env: "dev node hot.proxy"
-node_bin: "webpack --watch"
-
